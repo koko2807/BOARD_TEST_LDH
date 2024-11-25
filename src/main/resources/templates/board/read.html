@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>게시글 조회</title>
+</head>
+<body>
+    <h1>게시글 조회</h1>
+    <form action="" method="post">
+      <table border="1">
+        <tr>
+          <th>제목</th>
+          <td>
+            <input type="text" name="title" th:value="${board.title}">
+          </td>
+        </tr>
+        <tr>
+          <th>작성자</th>
+          <td>
+            <input type="text" name="writer" th:value="${board.writer}">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <textarea name="content" rows="5" cols="40" th:text="${board.content}"></textarea>
+          </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+              <button type="button" th:onclick="update()">수정</button>
+              <button type="button" onclick="location.href='/board/list'">목록</button>
+            </td>
+        </tr>
+        </table>
+          
+        </form>
+    
+    <script>
+      // 수정 화면 이동
+        function update() {
+          let id = "[[${board.id}]]"
+          location.href = "/board/update?id=" + id
+        }
+
+    </script>
+<script>
+
+            <table>
+                <tr>
+                    <td>
+                      <input type="text" name="writer" id="comment-writer" value="${writer}" />
+                    </td>
+                </tr>
+                <tr>
+                   <td>
+                      <textarea name="content" id="comment-content" rows="5" cols="40">${content}</textarea>
+                   </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        <button type="button" onclick=" updateComment( '${id}' )">수정</button>
+                        <button type="button" onclick=" cancelComment( this )">취소</button>
+                    </td>
+                </tr>
+              </table>
+      </script>
+
+</body>
+</html>
