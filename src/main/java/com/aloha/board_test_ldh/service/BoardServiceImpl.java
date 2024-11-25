@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.aloha.board_test_ldh.dto.Board;
+import com.aloha.board_test_ldh.dto.Page;
 import com.aloha.board_test_ldh.mapper.BoardMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -49,5 +50,13 @@ public class BoardServiceImpl implements BoardService {
         return result;
     }
 
+    @Override
+    public List<Board> list(Page page) throws Exception {
+        // 데이터 개수
+        int total = boardMapper.count();
+        page.setTotal(total);
+        List<Board> boardList = boardMapper.list(page);
+        return boardList;
+    }
 
 }

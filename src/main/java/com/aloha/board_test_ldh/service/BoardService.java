@@ -3,6 +3,7 @@ package com.aloha.board_test_ldh.service;
 import java.util.List;
 
 import com.aloha.board_test_ldh.dto.Board;
+import com.aloha.board_test_ldh.dto.Page;
 
 public interface BoardService {
 
@@ -16,4 +17,6 @@ public interface BoardService {
   public int update(Board board) throws Exception;
   // 게시글 삭제
   public int delete(String id) throws Exception;
+  // 페이징
+  public List<Board> list(Page page) throws Exception;
 }

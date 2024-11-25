@@ -107,24 +107,5 @@
 
      </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const $rows = document.getElementById('rows')
-            const $form = document.getElementById('form')
-            const $orderCode = document.getElementById('order-code')
-
-            // 필터 - 개수 변경 시
-            $rows.addEventListener('change', function()  {
-                $form.submit()
-            })
-            // 필터 - 순서 변경 시
-            $orderCode.addEventListener('change', function() {
-                $form.submit()
-            })
-
-        })
-
-
-    </script>
 </body>
 </html>

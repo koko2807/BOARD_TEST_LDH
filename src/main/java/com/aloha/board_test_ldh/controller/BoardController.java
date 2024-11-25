@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.aloha.board_test_ldh.dto.Board;
 import com.aloha.board_test_ldh.dto.Page;
@@ -29,18 +30,18 @@ public class BoardController {
   public String list(Model model
                           , Page page
                     ) throws Exception {
-    List<Board> boardList = boardService.list();
+    List<Board> boardList = boardService.list(page);
     model.addAttribute("boardList", boardList);
-    // model.addAttribute("rows", page.getRows());
-    // model.addAttribute("page", page);
+    model.addAttribute("rows", page.getRows());
+    model.addAttribute("page", page);
 
-    // String pageUrl = UriComponentsBuilder.fromPath("/board/list")
-    //                     // .queryParam("page", page.getPage())
-    //                     .queryParam("rows", page.getRows())
-    //                     .build()
-    //                     .toUriString();
+    String pageUrl = UriComponentsBuilder.fromPath("/board/list")
+                        // .queryParam("page", page.getPage())
+                        .queryParam("rows", page.getRows())
+                        .build()
+                        .toUriString();
 
-    // model.addAttribute("pageUrl", pageUrl);
+    model.addAttribute("pageUrl", pageUrl);
 
     return "/board/list";
   }
